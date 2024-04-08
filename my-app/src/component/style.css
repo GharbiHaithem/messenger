@@ -1,0 +1,15 @@
+.input-container {
+    position: relative;
+  }
+  
+  .icon-container {
+    position: absolute;
+    top: 50%;
+    left: 10px; /* Ajustez selon votre préférence pour l'espacement */
+    transform: translateY(-50%);
+  }
+  
+  .with-icon {
+    padding-left: 60px; /* Ajustez selon la largeur de l'icône */
+  }
+  

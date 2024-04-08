@@ -1,0 +1,15 @@
+.aaaaa{
+    display: flex !important;
+    align-items: center  !important;
+    justify-content: center !important;
+}
+.text-stroke {
+    --text-stroke-width: 2px; /* Ajustez la largeur du contour du texte */
+    --text-stroke-color: transparent /* Ajustez la couleur du contour du texte */
+    color: transparent !important; /* Ajustez la couleur du texte */
+    -webkit-text-stroke:3px var(--text-stroke-color);
+    letter-spacing: 2px;
+    font-weight: 900 !important;
+    font-size: 31px;
+}
+  

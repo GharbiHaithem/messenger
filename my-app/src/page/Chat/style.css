@@ -1,0 +1,25 @@
+.search-bar{
+    
+}
+input {
+    padding-left: 30px; /* Assurez-vous que le texte n'est pas caché par l'icône */
+    /* Ajoutez d'autres styles selon vos besoins */
+  }
+
+  input::before {
+    content: "\f007"; /* Code Unicode de l'icône FontAwesome (user icon) */
+    font-family: 'Font Awesome 5 Free'; /* Utilisez la famille de police FontAwesome */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px; /* Ajustez la position selon vos besoins */
+    color: #333; /* Couleur de l'icône */
+  }
+ /* Ajoutez ce style à votre feuille de style CSS */
+/* Ajoutez ce style à votre feuille de style CSS */
+::-webkit-scrollbar {
+  
+    transform: translateY(-60px) !important;
+  }
+  
+
