@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 const authRouter  = require('./router/user.route')
 const chatRouter  = require('./router/chat.route')
 const messageRouter  = require('./router/message.route')
-
+const path = require('path');
 const fs = require('fs');
 
 
