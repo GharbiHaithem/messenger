@@ -113,7 +113,7 @@ useEffect(() => {
   :
   messages?.length>0 && messages?.map((msg)=>(
 <>
-<div key={msg?._id}   ref={scroll}  className={`flex ${msg?.senderId===user?._id ? 'sg' : ''}  mt-3 rounded-lg ${msg?.senderId===user?._id ? 'bg-blue-400 text-white': 'bg-stone-200' } gap-3 p-[10px] w-[50%]`}>
+<div key={msg?._id}   ref={scroll}  className={`flex ${msg?.senderId===user?._id ? 'sg' : ''}  mt-3 rounded-lg ${msg?.senderId===user?._id ? 'bg-blue-400 text-white': 'bg-stone-200' } gap-3 p-[10px] w-[max-content] md:w-[50%]`}>
  {msg?.senderId !== user?._id &&   <Avatar/>}
    <div className="flex flex-col gap-[20px]">
    <span className="text-xs  ">{msg?.text}</span>
