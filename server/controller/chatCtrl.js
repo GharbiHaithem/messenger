@@ -6,9 +6,18 @@ const chatCtrl  ={
     
             // Vérifier si une conversation existe entre les deux utilisateurs
             const existingChat = await Chat.findOne({
-                members: {
-                    $elemMatch: { senderId, receivedId }
-                }
+                $or: [
+                    {
+                        members: {
+                            $elemMatch: { senderId, receivedId }
+                        }
+                    },
+                    {
+                        members: {
+                            $elemMatch: { senderId: receivedId, receivedId: senderId }
+                        }
+                    }
+                ]
             });
     
             if (existingChat) {
