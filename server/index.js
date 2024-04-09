@@ -14,8 +14,10 @@ const fs = require('fs');
 
 
 const app = express()
-
-
+app.use(express.static(path.join(__dirname, '../my-app/dist')));
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../my-app/dist/index.html'));
+  });
 app.use(cors({
     origin: 'https://messenger-1-zqtw.onrender.com', // Remplacez ceci par l'URL de votre client React
     credentials: true,
