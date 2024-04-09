@@ -15,7 +15,7 @@ import { allusers } from './features/AuthSlices'
 function App() {
   const dispatch = useDispatch()
 
-  const socket = useRef(io("ws://localhost:8900"))
+  const socket = useRef(io("ws:https://messenger-ncv2.onrender.com"))
   const {user,users} = useSelector(state=>state?.auth)
   const[userOnline,setUserOnline] = useState([])
   useEffect(() => {
