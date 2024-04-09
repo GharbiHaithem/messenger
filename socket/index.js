@@ -3,7 +3,7 @@ const app = express()
 app.use(express.static('public')); 
 const io = require('socket.io')(8900,
    { cors:{
-        origin:"https://messenger-1-zqtw.onrender.com/"
+        origin:"https://messenger-1-zqtw.onrender.com"
     
     },})
 
