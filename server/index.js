@@ -17,7 +17,7 @@ const app = express()
 
 
 app.use(cors({
-    origin: 'http://localhost:5173', // Remplacez ceci par l'URL de votre client React
+    origin: 'https://messenger-1-zqtw.onrender.com/', // Remplacez ceci par l'URL de votre client React
     credentials: true,
   }));
   
