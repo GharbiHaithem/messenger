@@ -97,7 +97,7 @@ const handleChatClick = (chatId) => {
          <div className="sm:w-[90%] w-full h-[70px] mx-auto flex justify-between items-center shadow-lg gap-[20px]  ">
                 <span className='w-[20%] mx-4 hidden sm:block'> Discussion</span>
            {back && <span className='mx-3 cursor-pointer' onClick={()=>{navigate('/chat')}}><BiArrowBack /></span>}
-                <div className='w-[70%] relative mx-[15px]'> <InputWithIcon name='searchQuery' onChange={handleSearch} icon={IoSearchOutline} placeholder="Rechercher" />
+                <div className='w-[50%] relative mx-[15px]'> <InputWithIcon name='searchQuery' onChange={handleSearch} icon={IoSearchOutline} placeholder="Rechercher" />
               
           {query && query?.length>0  &&    <div  className='absolute z-50 p-1 w-full h-[max-content] bg-blue-700  text-white top-[40px] left-0 cursor-pointer'  >
 {userData && userData?.map((_user)=>(
