@@ -78,7 +78,8 @@ const userCtrl = {
                 lastname: findUser.lastname,
                 email: findUser.email,
                 address: findUser.address,
-                token
+                token,
+                images:findUser.images
             })
         }
 
