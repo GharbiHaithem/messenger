@@ -1,0 +1,63 @@
+.c:hover .cc{display: block;
+right:37%;
+z-index: 1;
+color: rgb(214, 35, 35);
+}
+.c{
+    transition: transform 0.3s ease;
+}
+.c:hover .ccc{
+    display: block ;
+    bottom: 0;
+}
+ .f{
+    display: none;
+}
+ .aaa{
+  
+  
+}
+.aaa:hover .f{
+    display: block;
+}
+.aa{
+    width: 75%;
+}
+.l{
+    display: none;
+}
+.a{
+    
+        display: none;
+    
+}
+.aaa:hover .l{
+    display: block;
+}
+.aaa:hover .a{
+    display: block;
+}
+.aaa:hover .e{
+    display: block;
+}
+.e{
+    
+    display: none;
+
+}
+ .azz{
+    background: rgba(255, 255, 255, 0) !important;
+  
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left:0
+}
+.c:hover .azz{
+    background: rgba(35, 34, 34, 0.246) !important;
+  
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left:0
+}

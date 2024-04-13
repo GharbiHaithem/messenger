@@ -96,14 +96,14 @@ useEffect(() => {
   }, 3300);
 }, [messages]);
   return (
-    <div className=" w-[70%] mx-auto">
-<div className="flex items-center p-[10px] gap-[10px] shadow-lg">
+    <div className=" w-full  md:w-[70%] mx-auto">
+<div className="flex gap-[10px] items-center  p-[10px] fixed top-0 left-0  bg-white w-full  shadow-lg">
 <IoIosArrowRoundBack onClick={()=>navigate('/chat')} className="text-xl" />
 <Avatar/>
 <span>{userChatCurrent?.firstname + " "+ userChatCurrent?.lastname}</span>
 </div>
 
-<div  ref={containerRef} className={`flex flex-col gap-1 w-[90%] h-[500px] overflow-y-scroll p-6  mx-auto `}>
+<div  ref={containerRef} className={`flex flex-col gap-1 mt-[60px] w-[90%] h-[500px] overflow-y-scroll   mx-auto `}>
 {
   isLoading ? <div className="w-full h-full flex items-center justify-center bg-transparent backdrop-blur-sm">
     <CircleLoader color="#36d7b7" />
@@ -114,7 +114,7 @@ useEffect(() => {
   messages?.length>0 && messages?.map((msg)=>(
 <>
 <div key={msg?._id}   ref={scroll}  className={`flex ${msg?.senderId===user?._id ? 'sg' : ''}  mt-3 rounded-lg ${msg?.senderId===user?._id ? 'bg-blue-400 text-white': 'bg-stone-200' } gap-3 p-[10px] w-[60%]  md:w-[50%]`}>
- {msg?.senderId !== user?._id &&   <Avatar/>}
+ 
    <div className="flex flex-col gap-[20px]">
    <span className="text-xs  ">{msg?.text}</span>
    <span className={` font-extralight    self-end text-xs ${msg?.senderId === user?._id ? 'text-white' : 'text-gray-500'} `}>{moment(msg?.createdAt).fromNow()}</span>

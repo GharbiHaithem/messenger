@@ -35,7 +35,11 @@ passwordChangedAt:Date,
 signedByGoogle:{
     type:Boolean,
     default:false
-}
+},
+images:[{
+    public_id:String,
+    url:String
+}],
 
 },{
     timestamps:true

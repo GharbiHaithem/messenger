@@ -3,7 +3,7 @@ import './App.css'
 import Chat from './page/Chat'
 import Login from './page/Login'
 import Message from './page/Message'
-import{BrowserRouter, Routes ,Route, useNavigate} from 'react-router-dom'
+import{BrowserRouter, Routes ,Route} from 'react-router-dom'
 import Signup from './page/Signup'
 import{io} from 'socket.io-client'
 import { PrivateRoute } from './routes/privateRoute';
@@ -12,10 +12,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useEffect, useRef, useState } from 'react'
 import { useSelector , useDispatch } from 'react-redux'
 import { allusers } from './features/AuthSlices'
+import Profil from './component/Profil'
 function App() {
   const dispatch = useDispatch()
 
-  const socket = useRef(io("wss://messenger-ncv2.onrender.com"));
+  const socket = useRef(io("wss://messenger-ncv2.onrender.com"))
   const {user,users} = useSelector(state=>state?.auth)
   const[userOnline,setUserOnline] = useState([])
   useEffect(() => {
@@ -46,6 +47,7 @@ function App() {
     </PrivateRoute>
      }  />
   <Route    path='/message/:id' element={<Message  socket={socket}   />}  />
+  <Route  path='/profil/:id' element={<Profil/>} />
   </Routes>
   <ToastContainer
 position="top-center"

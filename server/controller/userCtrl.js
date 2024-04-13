@@ -115,6 +115,35 @@ const userCtrl = {
         } catch (error) {
             return res.status(500).json(error);
         }
+    },
+    updateProfileUser: async (req, res) => {
+        try {
+            // Extraire les données de req.body
+            const updateData = req.body;
+    
+            // Mettre à jour l'utilisateur en utilisant findByIdAndUpdate
+            const user = await User.findByIdAndUpdate(
+                req.user.id, // ID de l'utilisateur à mettre à jour
+                req.body, // Les données à mettre à jour (tous les champs dans req.body)
+                { new: true } // Cette option retourne le document mis à jour
+            );
+    
+            // Vérifier si l'utilisateur a été trouvé et mis à jour
+            if (!user) {
+                return res.status(404).json({ message: 'Utilisateur non trouvé' });
+            }
+    
+            // Renvoyer l'utilisateur mis à jour
+            res.json(user);
+        } catch (err) {
+            console.error(err);
+            res.status(500).json({ message: 'Une erreur est survenue lors de la mise à jour du profil' });
+        }
+    },
+    getUser:async(req,res)=>{
+        const getUser= await User.findById(req.params.id)
+        console.log(getUser)
+        res.status(201).json(getUser)
     }
     
 }

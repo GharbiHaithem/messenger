@@ -10,7 +10,9 @@ const chatRouter  = require('./router/chat.route')
 const messageRouter  = require('./router/message.route')
 const path = require('path');
 const fs = require('fs');
-
+const multer = require('multer');
+const cloudinary = require('cloudinary').v2;
+const uploadRouter = require('./router/upload.route')
 
 
 const app = express()
@@ -39,9 +41,12 @@ mongoose.connect(
 })
 
 
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 app.use('/api', authRouter)
 app.use('/api', chatRouter)
 app.use('/api', messageRouter)
+app.use('/api',upload.single('images'),uploadRouter)
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../my-app/dist/index.html'));
   });

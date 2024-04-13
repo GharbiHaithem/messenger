@@ -113,7 +113,7 @@ export const verifycode = createAsyncThunk('auth/code/verify',async(data,thunkAP
 export const getuser = createAsyncThunk('auth/getAuser',async(id,thunkAPI)=>{
   try {
  
-    return await authservice.getUser(id)
+    return await authservice.user(id)
   } catch (error) {
     return thunkAPI.rejectWithValue(error)
   }
@@ -278,12 +278,13 @@ export const authSlice = createSlice({
         state.isLoading=true
        })
        .addCase(updatesimpleuser.fulfilled,(state,action)=>{
-        console.log(action)
+        console.log(action.payload)
         state.isLoading=false
         state.isSuccess=true
-       state.userupdated = action.payload.userUpdated
+       state.userupdated = action.payload
           state.message=action.payload.message
         state.isLogin=true
+        localStorage.setItem('customer',JSON.stringify(action.payload))
      
     
 
@@ -445,7 +446,7 @@ export const authSlice = createSlice({
         console.log(action.payload)
         state.isLoading=false
         state.isSuccess=true
-        state.getUser = action.payload
+        state.user = action.payload
         state.verified = true
        
 

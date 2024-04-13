@@ -1,23 +1,26 @@
 
-import InputWithIcon from '../../component/InputWithIcon '
+
 import './style.css'
-import { IoSearchOutline } from "react-icons/io5";
+
 
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { allusers } from '../../features/AuthSlices';
-import Conversation from '../../component/Conversation';
+
 import { chats as fnchats, createChat } from '../../features/chatSlice';
 import { useNavigate } from 'react-router';
 import { messages as fnmessages,allMessages } from "../../features/messageSlice";
 import TextChat from '../../component/TextChat';
 import PropTypes from 'prop-types';
 import Avatar from '../../component/Conversation/Avatar';
+import Nav from '../Nav';
+
 
 const Chat = ({_users,userOnline}) => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const[query,setQuery] = useState()
+    console.log(_users)
     const handleSearch = (e) => {
         setQuery(e.target.value);
     }
@@ -96,50 +99,23 @@ const handleChatClick = (chatId) => {
 
     return (
         <div className='"w-[90%] flex flex-col  mx-auto'>
-            <div className="sm:w-[90%] w-full h-[70px] mx-auto flex justify-between items-center shadow-lg gap-[20px]  ">
-                <span className='w-[20%] mx-4 hidden sm:block'> Discussion</span>
-            
-                <div className='w-[70%] relative'> <InputWithIcon name='searchQuery' onChange={handleSearch} icon={IoSearchOutline} placeholder="Rechercher" />
-              
-                <div  className='absolute z-50 p-1 w-full h-[max-content] bg-transparent top-[40px] left-0 cursor-pointer'  >
-{userData && userData?.map((_user)=>(
-   <>
+       <Nav/>
 
-    <div key={_user?._id} onClick={()=>{
-     
-        dispatch(createChat({senderId:_user?._id,receivedId:user?._id}))
-        dispatch(fnchats())
-        setQuery("")
-        }}>
-            
- <Conversation   user={_user} /> 
- 
-    </div>
-   </>
- 
-))}
-                </div>
-                </div>
-                <div className="dropdown mr-[10px] w-[20%]">
-  <button className="text-dark dropdown-toggle  " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-    Dropdown 
-  </button>
-  <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><a className="dropdown-item" href="#">Action</a></li>
-    <li><a className="dropdown-item" href="#">Another action</a></li>
-    <li><a className="dropdown-item" href="#">Something else here</a></li>
-  </ul>
-</div>
-            </div>
+        
 
-            <div className='flex flex-row  gap-2 mt-[20px]  p-3 scroll-container overflow-x-scroll w-[90%]   mx-auto'>
+          <div className='flex    gap-12 mt-[20px]  p-3  w-[90%] mx-auto overflow-x-scroll   h-[max-content]   '>
               {
                _users?.length>0 && _users?.map((_user)=>(
-                  <Avatar _users={_user?._id} userOnline={userOnline} key={_user?._id} fullname={_user?.firstname[0] + "-" +_user?.lastname[0]} alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
+                <>
+                <div className='w-[50px] h-[50px]'>
+                <Avatar  infousers={_user} _users={_user?._id} userOnline={userOnline}  key={_user?._id} fullname={_user?.firstname[0] + "-" +_user?.lastname[0]} alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
+                </div>
+                </>
                 ))
               }
                
             </div>
+          
             <div className='flex flex-col gap-10 mt-[50px] overflow-y-scroll h-[700px] w-[90%] mb-[50px]  mx-auto'>
            
            {
@@ -147,7 +123,7 @@ const handleChatClick = (chatId) => {
               <>
               
                 <div key={c?.user?._id} className='w-[100%] flex flex-wrap gap-[25px]'onClick={() => handleChatClick(c?.chatId)}>
-                <Avatar   _users={c?.user?._id} userOnline={userOnline} fullname={c?.user?.firstname[0]+"-"+c?.user?.lastname[0]} alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                <Avatar infousers={c?.user}  _users={c?.user?._id} userOnline={userOnline} fullname={c?.user?.firstname[0]+"-"+c?.user?.lastname[0]} alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
                 <div className='flex flex-col  w-[70%]'>
                     <span className='font-semibold'>{c?.user?.firstname + " " + c?.user?.lastname}</span>
                     <TextChat key={c?.user?._id} index={index} c={messages?.filter((x)=>x?.chatId?._id === c?.chatId)} />

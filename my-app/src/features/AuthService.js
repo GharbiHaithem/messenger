@@ -47,7 +47,12 @@ const getUser = async(id)=>{
  }
  const updateSimpleUser = async(data)=>{
    console.log(data)
-    const response = await API.put(`https://server-n.onrender.com/api/update-simple-user/${data.id}`,data.dataUser)
+    const response = await API.put(`${VITE_PUBLIC_URL}/api/edit-info`,data)
+    return await response.data 
+ }
+ const user = async(id)=>{
+   console.log(id)
+    const response = await API.get(`${VITE_PUBLIC_URL}/api/user/${id}`)
     return await response.data 
  }
  const resetpassword = async(data)=>{
@@ -98,7 +103,7 @@ const searchUser = async (query)=>{
    return await response.data
 }
 const authServices = {
-   searchUser, activateDesactivateAccountUser,   deleteUser,   updateSimpleUser,  verifyPassword,verification2f, createCode, getUser,createuser,login,forgotPassword,updateUser,resetpassword,getusers
+   searchUser, activateDesactivateAccountUser, user,  deleteUser,   updateSimpleUser,  verifyPassword,verification2f, createCode, getUser,createuser,login,forgotPassword,updateUser,resetpassword,getusers
 }
 export default authServices
 
