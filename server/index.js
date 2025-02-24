@@ -19,9 +19,12 @@ const app = express()
 app.use(express.static(path.join(__dirname, '../my-app/dist')));
 
 app.use(cors({
-    origin: 'https://messenger-1-zqtw.onrender.com/', // Remplacez ceci par l'URL de votre client React
+    origin: ['https://messenger-1-zqtw.onrender.com', 'http://localhost:5173'], // Autorise React et Postman
     credentials: true,
-  }));
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+}));
+
   
 app.use(morgan("dev"))
 app.use(express.json())
