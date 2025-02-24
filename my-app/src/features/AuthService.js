@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const VITE_PUBLIC_URL   ="https://messenger-ncv2.onrender.com"
+const VITE_PUBLIC_URL   ="https://messenger-server-t9po.onrender.com"
 // https://messenger-server-t9po.onrender.com
 const API = axios.create({baseURL:VITE_PUBLIC_URL});
 API.interceptors.request.use((req)=>{
