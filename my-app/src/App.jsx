@@ -18,7 +18,8 @@ import ModalCall from './page/ModalCall'
 function App() {
   const dispatch = useDispatch()
 const[call,setCall]=useState(false)
-  const socket = useRef(io("http://localhost:8900"))
+ const socket = useRef(io("wss://messenger-ncv2.onrender.com"));
+
   const {user,users} = useSelector(state=>state?.auth)
   const[userOnline,setUserOnline] = useState([])
 
