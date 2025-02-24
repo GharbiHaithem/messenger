@@ -1,5 +1,5 @@
 import axios from 'axios'
-const VITE_PUBLIC_URL   ="http://localhost:5001/api"
+const VITE_PUBLIC_URL   ="https://messenger-server-t9po.onrender.com/api"
 
 // import { config } from '../../utils/axiosConfig'
 
