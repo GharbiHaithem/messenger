@@ -13,11 +13,12 @@ import PropTypes from 'prop-types';
 import CircleLoader from "react-spinners/CircleLoader";
 import { IoMdCall } from "react-icons/io";
 import Peer from "simple-peer"
-import Button from "@material-ui/core/Button"
-import IconButton from "@material-ui/core/IconButton"
-import TextField from "@material-ui/core/TextField"
-import AssignmentIcon from "@material-ui/icons/Assignment"
-import PhoneIcon from "@material-ui/icons/Phone"
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import TextField from "@mui/material/TextField";
+import AssignmentIcon from "@mui/icons-material/Assignment";
+import PhoneIcon from "@mui/icons-material/Phone";
+
 import { CopyToClipboard } from "react-copy-to-clipboard"
 const Message = ({ socket }) => {
   const { id } = useParams()

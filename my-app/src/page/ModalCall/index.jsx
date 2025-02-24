@@ -5,12 +5,11 @@ import './style.css'
 
 import Peer from "peerjs"
 import PropTypes from 'prop-types';
-import Button from "@material-ui/core/Button"
-import IconButton from "@material-ui/core/IconButton"
-import TextField from "@material-ui/core/TextField"
-import AssignmentIcon from "@material-ui/icons/Assignment"
-import PhoneIcon from "@material-ui/icons/Phone"
-
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import TextField from "@mui/material/TextField";
+import AssignmentIcon from "@mui/icons-material/Assignment";
+import PhoneIcon from "@mui/icons-material/Phone";
 import { CopyToClipboard } from "react-copy-to-clipboard"
 import { useSelector } from 'react-redux';
 
