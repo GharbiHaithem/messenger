@@ -13,16 +13,25 @@ import { useEffect, useRef, useState } from 'react'
 import { useSelector , useDispatch } from 'react-redux'
 import { allusers } from './features/AuthSlices'
 import Profil from './component/Profil'
+import ModalCall from './page/ModalCall'
+
 function App() {
   const dispatch = useDispatch()
-
-  const socket = useRef(io("wss://messenger-ncv2.onrender.com"))
+const[call,setCall]=useState(false)
+  const socket = useRef(io("http://localhost:8900"))
   const {user,users} = useSelector(state=>state?.auth)
   const[userOnline,setUserOnline] = useState([])
+
+
+
+
+
+
   useEffect(() => {
     
     socket?.current?.emit("adduser", user?._id);
-
+    
+   
     socket?.current?.on("getuser",user=>{
       console.log(user)
       setUserOnline(user)
@@ -63,7 +72,7 @@ theme="light"
 
 />
    </BrowserRouter>
-      
+ 
     </div>
   )
 }

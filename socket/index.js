@@ -3,7 +3,7 @@ const app = express()
 app.use(express.static('public')); 
 const io = require('socket.io')(8900,
    { cors:{
-        origin:"https://messenger-1-zqtw.onrender.com"
+        origin:"http://localhost:5173"
     
     },})
 
@@ -22,14 +22,17 @@ const io = require('socket.io')(8900,
 io.on("connection",(socket)=>{
   socket.on('test', (data) => {
     console.log('Événement "test" reçu avec les données:', data);
-
+    io.emit("getuser",users)
     // Envoyer une réponse au client
     io.emit('response', data);
 });
-console.log("a user cnnected")
+
+
 socket.on("adduser",userId=>{
     adduser(userId,socket.id)
+    console.log(userId)
     io.emit("getuser",users)
+    console.log("a user cnnected " + users.userId)
 })
 socket.on("sendMessage",({receiveId,data})=>{
     console.log({receiveId})
@@ -42,6 +45,8 @@ socket.on("sendMessage",({receiveId,data})=>{
      io.to(user.socketId).emit("getMessage" , {data})}
    
 })
+
+
 socket.on("sendMessage1",(userId)=>{
     console.log(userId)
    const user =  getUser(userId)
@@ -53,6 +58,24 @@ socket.on("sendMessage1",(userId)=>{
    }
    
 })
+
+
+
+socket.on('receiveSocket',(data)=>{
+ 
+  const me= getUser(data.me)
+  const other = getUser(data.targetid)
+  console.log({'cccccc':me,other})
+  socket.emit("sendSocket" , ({me,other}))
+})
+socket.on("callUser", (data) => {
+  io.to(data.userToCall).emit("callUser", { signal: data.signalData, from: data.from, name: data.name })
+})
+
+socket.on("answerCall", (data) => {
+  io.to(data.to).emit("callAccepted", data.signal)
+})
+
 socket.on('audioMessage', (audioData) => {
     // Sauvegarder le fichier audio sur le serveur
     const fileName = `public/audio_${Date.now()}.webm`;
@@ -61,9 +84,12 @@ socket.on('audioMessage', (audioData) => {
 
     // Vous pouvez faire d'autres traitements ici (transmettre à d'autres utilisateurs, etc.)
   })
+ 
 socket.on("disconnect", () => {
     removeuser(socket.id);
+    socket.broadcast.emit("callEnded")
     io.emit("getuser", users);
 });
-})
+
+});
 

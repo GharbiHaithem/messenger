@@ -19,7 +19,7 @@ const app = express()
 app.use(express.static(path.join(__dirname, '../my-app/dist')));
 
 app.use(cors({
-    origin: 'https://messenger-1-zqtw.onrender.com', // Remplacez ceci par l'URL de votre client React
+    origin: 'http://localhost:5173', // Remplacez ceci par l'URL de votre client React
     credentials: true,
   }));
   

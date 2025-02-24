@@ -38,6 +38,7 @@ const Login = ({socket}) => {
   const {isLogin}  = useSelector(state=>state?.auth)
   useEffect(()=>{
     if(isLogin ){
+      socket?.current?.emit('adduser',user?._id)
   navigate('/chat')
     }
   },[navigate,isLogin])
