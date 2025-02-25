@@ -2,9 +2,10 @@ const express = require('express')
 const app = express()
 app.use(express.static('public')); 
 const io = require('socket.io')(8900,
-   { cors:{
-        origin:"https://messenger-1-zqtw.onrender.com/"
-    
+   {  cors: {
+        origin: ["http://localhost:5173", "https://messenger-1-zqtw.onrender.com"], // Dev + Prod
+        methods: ["GET", "POST"],
+        credentials: true
     },})
 
     let users= []
