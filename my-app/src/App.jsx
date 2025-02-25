@@ -18,7 +18,21 @@ import ModalCall from './page/ModalCall'
 function App() {
   const dispatch = useDispatch()
 const[call,setCall]=useState(false)
- const socket = useRef(io("wss://messenger-ncv2.onrender.com"));
+const socket = useRef(io("https://messenger-ncv2.onrender.com", {
+    transports: ["websocket", "polling"],
+    withCredentials: true
+}));
+
+useEffect(() => {
+    socket.current.on("connect", () => {
+        console.log("✅ Connecté au serveur WebSocket !");
+    });
+
+    socket.current.on("connect_error", (err) => {
+        console.error("❌ Erreur WebSocket :", err);
+    });
+}, []);
+
 
   const {user,users} = useSelector(state=>state?.auth)
   const[userOnline,setUserOnline] = useState([])
